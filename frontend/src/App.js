@@ -1,10 +1,12 @@
-import {createBrowserRouter, Route} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import HomePage from "./pages/Home";
 import EventsPage from "./pages/Events";
 import EventDetailPage from "./pages/EventDetail";
 import NewEventPage from "./pages/NewEvent";
 import EditEventPage from "./pages/EditEvent";
+import RootLayout from "./pages/Root";
+import EventLayout from "./pages/EventLayout";
 
 const router = createBrowserRouter([
   {
@@ -12,10 +14,16 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {index: true, element: <HomePage />},
-      {path: '/events', element: <EventsPage />},
-      {path: '/events/:EventId', element: <EventDetailPage />},
-      {path: '/events/new', element: <NewEventPage />},
-      {path: '/events/:EditId', element: <EditEventPage />}
+      {
+        path: 'events',
+        element: <EventLayout />,
+        children: [
+          {index: true, element: <EventsPage />},
+          {path: ':eventId', element: <EventDetailPage />},
+          {path: 'new', element: <NewEventPage />},
+          {path: ':editId/edit', element: <EditEventPage />}
+        ],
+      },
     ],
   },
 ]);
@@ -23,13 +31,10 @@ const router = createBrowserRouter([
 function App() {
 
 
-  return <div></div>;
-}
+  return <RouterProvider router={router} />;
+};
 
 export default App;
-
-
-
 
 // Challenge / Exercise
 
