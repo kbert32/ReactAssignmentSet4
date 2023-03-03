@@ -20,6 +20,8 @@ export async function loader() {
     } else {
         // const resData = await response.json();   //these statements are not needed with react router
         // return resData.events;                   //react router returns the data part of the Response constructor
+        console.log(response);
+        console.log(response.json());
         return response;                            //we can return the 'response' directly
     }
 };
