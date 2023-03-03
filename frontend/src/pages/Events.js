@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, json } from 'react-router-dom';
 
 import EventsList from '../components/EventsList';
 
@@ -12,16 +12,17 @@ function EventsPage() {
 export default EventsPage;
 
 export async function loader() {
-    const response = await fetch('http://localhost:8080/eventss');
+    const response = await fetch('http://localhost:8080/events');
 
     if (!response.ok) {
-        // throw new Response(JSON.stringify({message: 'Could not fetch events.'}), {status: 500});
-        throw new Response('haha', {status: 500, statusText: 'Could not fetch events.'});
-    } else {
+        // throw new Response(JSON.stringify({message: 'Could not fetch events.'}), {status: 500});     //Max threw the response error this way but,
+        // throw new Response('haha', {status: 500, statusText: 'Could not fetch events.'});           //I prefer doing it this way.  The 'haha' string is not being used in this example, it could be replaced with null.
+        throw json({message: 'Could not fetch events.'}, {status: 500});                             //Can also be done this way using react router's 'json' function, must be imported
+        // throw json(null, {status: 500, statusText: 'Could not fetch events.'});                  //Alternative way using 'json' function
+
+    } else {                                                                                  
         // const resData = await response.json();   //these statements are not needed with react router
         // return resData.events;                   //react router returns the data part of the Response constructor
-        console.log(response);
-        console.log(response.json());
         return response;                            //we can return the 'response' directly
     }
 };
