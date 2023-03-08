@@ -1,15 +1,18 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Form } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
-function EventForm({ method, event }) {
+function EventForm({ method, event=false } = {}) {
   const navigate = useNavigate();
   function cancelHandler() {
     navigate('..');
-  }
-
-  return (
-    <form className={classes.form}>
+  }                               //special Form component provided by react-router-dom, makes sure to prevent the brower's 
+                                  //default of submitting the form, instead takes the request and sends it to the 'action' function
+                                  //The Form component is the typical and default way to trigger an action function
+                                  //By using the 'action' prop on the Form component, we can specify an action on a different route, 
+                                  //otherwise the action from the currently active route will be used
+  return (                            
+    <Form method='post' className={classes.form}>  
       <p>
         <label htmlFor="title">Title</label>
         <input id="title" type="text" name="title" required defaultValue={event.title || ''} />
@@ -32,7 +35,7 @@ function EventForm({ method, event }) {
         </button>
         <button>Save</button>
       </div>
-    </form>
+    </Form>
   );
 }
 
