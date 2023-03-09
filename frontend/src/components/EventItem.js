@@ -8,7 +8,7 @@ function EventItem({ event }) {
     const proceed = window.confirm('Are you sure?');    //window.confirm is built into the browser
 
     if (proceed) {
-      submit(null, {method: 'delete'}); //first argument of the 'submit' method is the data we want to submit, the data will be automatically wrapped in a form object
+      submit(null, {method: 'DELETE'}); //first argument of the 'submit' method is the data we want to submit, the data will be automatically wrapped in a form object
     }                                   //which could then be extracted with the 'formData()' method; the second argument allows us to set the same values we could set on a 'Form'
   };                                    //such as 'method' or 'action'; We are deleting so no need to send data, action is not needed since our 'action' function is within the same route
                                         //technically we don't need method but we can send it to the action function and use it there

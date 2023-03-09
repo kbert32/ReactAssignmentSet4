@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classes from './MainNavigation.module.css';
+import NewsletterSignup from './NewsletterSignup';
 
 function MainNavigation() {                     //for some reason the 'Home' NavLink is working properly 
   return (                                      //although it should contain the 'end' property
@@ -14,8 +15,13 @@ function MainNavigation() {                     //for some reason the 'Home' Nav
             <NavLink to="/events" className={({isActive}) =>
               isActive ? classes.active : undefined}>Events</NavLink>
           </li>
+          <li>
+            <NavLink to="/newsletter" className={({isActive}) =>
+              isActive ? classes.active : undefined}>Newsletter</NavLink>
+          </li>
         </ul>
       </nav>
+      <NewsletterSignup />
     </header>
   );
 }
