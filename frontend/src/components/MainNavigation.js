@@ -24,6 +24,6 @@ function MainNavigation() {                     //for some reason the 'Home' Nav
       <NewsletterSignup />
     </header>
   );
-}
+};
 
 export default MainNavigation;
