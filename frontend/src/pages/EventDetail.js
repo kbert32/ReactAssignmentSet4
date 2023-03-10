@@ -5,7 +5,7 @@ import EventsList from '../components/EventsList';
 
 function EventDetailPage() {
     const {event, events} = useRouteLoaderData('detailLoader');
-
+    
     return (
         <>
             <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
