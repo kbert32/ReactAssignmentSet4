@@ -1,3 +1,5 @@
+import MeetupList from '../components/meetups/MeetupList';
+
 const MEETUPS = [
     {
         id: 'm1',
