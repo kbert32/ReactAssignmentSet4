@@ -23,14 +23,14 @@ const router = createBrowserRouter([
         children: [
           { 
             index: true, 
-            element: <Suspense fallback={<p>Loading...</p>}><BlogPage /></Suspense>, //Suspense is used for fallback
+            element: <Suspense fallback={<p>Loading...</p>}><BlogPage /></Suspense>, //Suspense is used for fallback, and to wait for content to be loaded before rendering it
             loader: () => import('./pages/Blog').then((module) => module.loader()), //method for lazy loading our loader function 
-          },
+          },                    
           { 
             path: ':id', 
             element: <Suspense fallback={<p>Loading...</p>}><PostPage /></Suspense>, 
-            loader: (meta) => import('./pages/Post').then((module) => module.loader(meta)), 
-          },
+            loader: (meta) => import('./pages/Post').then((module) => module.loader(meta)), //this function requires the 'params' argument 
+          },                          //could also have been done with destructuring = {params} instead of passing the entire 'meta' object
         ],
       },
     ],
