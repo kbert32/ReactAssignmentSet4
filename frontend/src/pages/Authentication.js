@@ -41,6 +41,9 @@ export async function action ({request}) {
   const token = resData.token;
 
   localStorage.setItem('token', token);
-  
+  const expiration = new Date();      //current date/time
+  expiration.setHours(expiration.getHours() +1);    //current date/time + 1 hour 
+  localStorage.setItem('expiration', expiration.toISOString());  //sets expiration time to local storage in ISO format 
+                                                //ISOString = string in simplified extended ISO format                                                               
   return redirect('/');
 };

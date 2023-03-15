@@ -19,4 +19,21 @@
 .list a:hover,
 .list a.active {
   color: var(--color-primary-800);
+  text-decoration-line: underline;
+}
+
+.list button {
+  text-decoration: none;
+  color: var(--color-primary-400);
+  padding: 2px 5px 5px;
+  font-size: 15.5px;
+  margin-top: -1px;
+}
+
+.list button:hover {
+  color: var(--color-primary-800);
+  cursor: pointer;
+  background-color: var(--color-primary-800);
+  border-radius: 5px;
+  color: black;
 }
