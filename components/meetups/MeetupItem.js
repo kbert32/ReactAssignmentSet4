@@ -1,7 +1,15 @@
 import Card from '../ui/Card';
 import classes from './MeetupItem.module.css';
+// import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function MeetupItem(props) {
+  const router = useRouter();
+
+  function detailHandler() {
+    router.push('/' + props.id);
+  };
+  
   return (
     <li className={classes.item}>
       <Card>
@@ -13,7 +21,7 @@ function MeetupItem(props) {
           <address>{props.address}</address>
         </div>
         <div className={classes.actions}>
-          <button>Show Details</button>
+          <button onClick={detailHandler}>Show Details</button>          
         </div>
       </Card>
     </li>
@@ -21,3 +29,13 @@ function MeetupItem(props) {
 }
 
 export default MeetupItem;
+
+
+//We could have used '<Link>'instead of 'useRouter'
+//for the 'Show Details' button:
+
+{/* <Link href={'./' + props.id}>
+<button>Show Details</button>          
+</Link> */}
+
+//'useRouter' allows programmatic navigation
