@@ -18,8 +18,8 @@ export default function MeetupDetails(props) {
         </>
     );
 };
-
-export async function getStaticPaths() {
+            //'getStaticPaths' is used when the component has a dynamic path, in order for 'getStaticProps' to pre-build the page, 'getStaticPaths' needs to pre-build the paths
+export async function getStaticPaths() {        
     const client = await MongoClient.connect('mongodb+srv://kbert32:vacation32@cluster0.umq2lww.mongodb.net/meetups?retryWrites=true&w=majority');
     const db = client.db();
 

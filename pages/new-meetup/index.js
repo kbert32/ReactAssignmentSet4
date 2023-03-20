@@ -24,12 +24,12 @@ export default function NewMeetupPage() {
     };
 
     return (
-        <Fragment>
+        <>
             <Head>
                 <title>Add a New Meetup</title>
-                <Meta name='description' content='Add your own meetups and create amazing networking opportunities.' />
+                <meta name='description' content='Add your own meetups and create amazing networking opportunities.' />
             </Head>
             <NewMeetupForm onAddMeetup={addMeetUpHandler} />
-        </Fragment>
+        </>
     ); 
 };
