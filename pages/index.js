@@ -1,5 +1,6 @@
 import { MongoClient } from 'mongodb';
 import MeetupList from '../components/meetups/MeetupList';
+import Head from 'next/head';
 
 // const DUMMY_MEETUPS = [
 //     {
@@ -18,11 +19,17 @@ import MeetupList from '../components/meetups/MeetupList';
 //     },
 // ];
 
-// const MEETUPS = DUMMY_MEETUPS;
+export default function HomePage(props) {   //props received here come from the 'getStaticProps' function
 
-export default function HomePage(props) {   //props received here comes from the 'getStaticProps' function
-
-    return <MeetupList meetups={props.meetups} />;
+    return ( 
+        <>
+            <Head>
+                <title>React Meetups</title>
+                <meta name='description' content='Browse a huge list of highly active React meetups!' />
+            </Head>
+            <MeetupList meetups={props.meetups} />;
+        </>
+    );
 };
 
     //getStaticProps is a reserved name, Next.js looks for this name, and if it finds it, it executes this function
@@ -31,7 +38,7 @@ export default function HomePage(props) {   //props received here comes from the
     //before executing the component function, therefore you're able to load data before the component is rendered 
     //You can execute code in this function that would normally run on a server, (access a file system, securely connect
     //to a database or API), this function is only executed during the build process, not on the server or on the client side
-    //
+    
 export async function getStaticProps() {    //this function must return an object, typically with a 'props' property
     //fetch data from an API
     const client = await MongoClient.connect('mongodb+srv://kbert32:vacation32@cluster0.umq2lww.mongodb.net/meetups?retryWrites=true&w=majority');
@@ -41,11 +48,7 @@ export async function getStaticProps() {    //this function must return an objec
     
     const meetups = await meetupsCollection.find().toArray();
 
-    console.log(meetups);
-
     client.close();
-
-    // meetups = meetups.toArray();
 
     return {
         props: {
