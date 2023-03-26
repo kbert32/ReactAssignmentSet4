@@ -9,9 +9,41 @@
 }
 
 .BackdropOpen {
-    display: block;
+    /* display: block; */
+    animation: openBackdrop .4s ease-out forwards;
 }
 
 .BackdropClosed {
-    display: none;
+    /* display: none; */
+    animation: closeBackdrop 1s ease-out forwards;
+}
+
+@keyframes openBackdrop {
+    0% {
+        opacity: 0;
+        z-index: 100;
+    }
+
+    50% {
+        opacity: .8;
+    }
+
+    100% {
+        opacity: 1;;
+    }
+}
+
+@keyframes closeBackdrop {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .9;
+    }
+
+    100% {
+        opacity: 0;
+        z-index: -100;
+    }
 }
