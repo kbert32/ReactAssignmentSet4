@@ -16,4 +16,5 @@ body {
 .Button:hover,
 .Button:active {
   background-color: #fa923f;
+  color: blue;
 }
